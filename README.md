@@ -308,6 +308,7 @@ Nginx ingress controller là loại ingress controller thường được sử d
 Các bước thực hiện:
 
 - Trong file `nginx-values.yaml` chứa custom values để triển khai nginx-ingress cho 1 namespace
+- Sửa giá trị `nodePort` để tránh trùng với người khác
 - Chạy lệnh sau để cài đặt:
 ```bash
 # Update repo
@@ -317,3 +318,17 @@ helm repo update
 # Install nginx ingress
 helm upgrade -n <ns> --install -f nginx-values.yaml nginx-ingress ingress-nginx/ingress-nginx
 ```
+
+- Quay trở lại bài thực hành số 3 của demo-service và triển khai thành công ingress cho ứng dụng NodeJS
+
+## Thực hành 2: Đóng gói ứng dụng vào helm chart
+
+- Copy file `deployment.yaml`, `service.yaml`, `ingress.yaml` từ bài demo-service vào thư mục `demo-chart/templates`
+- Thay các giá trị image, tên deployment, tên service, port, biến môi trường bằng template và sửa lại trong `values.yaml`
+- Cài đặt app bằng lệnh 
+
+```bash
+helm upgrade -n <ns> --install node-app ./demo-chart
+```
+
+- Kiểm tra ứng dụng đã chạy thành công chưa bằng các phương pháp đã học từ bài trước.
