@@ -1,0 +1,15 @@
+controller:
+  kind: Deployment
+  replicaCount: 1
+  hostNetwork: false
+  service:
+    externalTrafficPolicy: "Local"
+    enableHttps: false
+    type: "NodePort"
+    nodePorts:
+      http: 32080
+  config:
+    use-forwarded-headers: "true"
+    compute-full-forwarded-for: "true"
+  scope:
+    enabled: true
