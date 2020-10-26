@@ -7,12 +7,16 @@ controller:
     enableHttps: false
     type: "NodePort"
     nodePorts:
-      http: 32080
+      http: 32082
   config:
     use-forwarded-headers: "true"
     compute-full-forwarded-for: "true"
   scope:
     enabled: true
+  admissionWebhooks:
+    enabled: false
+rbac:
+  scope: true
 
 serviceAccount:
   create: false
