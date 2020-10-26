@@ -13,3 +13,6 @@ controller:
     compute-full-forwarded-for: "true"
   scope:
     enabled: true
+
+serviceAccount:
+  create: false
